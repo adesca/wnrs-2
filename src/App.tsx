@@ -14,7 +14,7 @@ import {
   selectedLevelStyles,
   titleStyles,
 } from "./styles/app.css";
-import {ReactNode, useState} from "react";
+import { type ReactNode,useState} from "react";
 
 function shuffle<T>(array: T[]) {
   let currentIndex = array.length;
@@ -88,8 +88,7 @@ function App(): ReactNode {
     }
   }
 
-  return (
-    <div className={appStyles}>
+  return <div className={appStyles}>
       <Credits />
       <div className={levelsStyles}>{buttons}</div>
       <div className={questionStyles}>
@@ -101,7 +100,6 @@ function App(): ReactNode {
       </div>
       <CardHistory cardHistory={cardHistory} />
     </div>
-  );
 }
 
 export default App;

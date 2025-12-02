@@ -1,5 +1,3 @@
-import { FunctionComponent } from "react";
-
 import Card from "../card/Card";
 import { smallCardStyles } from "../card/Card.css";
 import {
@@ -13,7 +11,7 @@ interface CardHistoryProps {
   cardHistory: string[];
 }
 
-const CardHistory: FunctionComponent<CardHistoryProps> = ({ cardHistory }) => {
+const CardHistory = ({ cardHistory }: CardHistoryProps) => {
   return (
     <div className={historyStyles}>
       <div className={historyTitleStyles}>previous cards</div>
