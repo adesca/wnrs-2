@@ -9,7 +9,8 @@ interface ContextType {
     cardHistory: string[],
     handleNext: () => void,
     currLevel: LevelType,
-    setLevel: (level: LevelType) => void
+    handleNewLevel: (level: LevelType) => void,
+    deckInfo: {currCardIdx: number, remainingCards: number}
 }
 
 // const DeckContext = createContext<null | {context: ContextType, currentLevel: LevelType}>(null);
@@ -29,15 +30,11 @@ export function DeckContextProvider(props) {
         two: shuffle(xxxDeck.level_two),
         three: shuffle(xxxDeck.level_three)
     }
-    // const [deckState, setDeckState] = useState<ContextType>({
-    //     name: 'xxx',
-    //     one: xxxDeck.level_one,
-    //     two: xxxDeck.level_two,
-    //     three: xxxDeck.level_three
-    // })
+
     const [currLevel, setLevel] = useState<LevelType>('one')
     const [currCard, setCurrCard] = useState<string>(gameState[currLevel][0])
     const [cardHistory, setCardHistory] = useState<string[]>([])
+    const [deckInfo, setDeckInfo] = useState({currCardIdx: 1, remainingCards: 100})
 
     function handleNext() {
         const finalMessage = "You have finished this level!";
@@ -57,10 +54,16 @@ export function DeckContextProvider(props) {
         }
     }
 
+    function handleNewLevel(newLevel: LevelType) {
+        setLevel(newLevel)
+        setCurrCard(gameState[newLevel][0])
+        setDeckInfo({currCardIdx: 1, remainingCards: gameState[newLevel].length})
+    }
+
 
     return <DeckContext value={{
         currentDeck: gameState[currLevel], currLevel, handleNext, currCard, cardHistory,
-        setLevel
+        handleNewLevel, deckInfo
     }}>
         {props.children}
     </DeckContext>

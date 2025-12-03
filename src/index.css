@@ -28,3 +28,11 @@
   --bulma-card-background-color: hsl(0,0,100%);
   --bulma-card-shadow: 0 .7px 2.1px #00000005, 0 1.6px 4.8px #00000007, 0 2.9px 8.7px #00000008, 0 4.8px 14.5px #0000000a, 0 7.9px 23.8px #0000000b, 0 13.9px 41.6px #0000000d, 0 30px 90px #00000012;;
 }
+
+dialog::backdrop {
+  background-color: rgba(255,255,255,0.75);
+}
+
+[popover] {
+  border: none
+}
