@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, ReactNode, useContext, useState} from "react";
 import xxxDeck from '../decks/xxx.json';
 
 type LevelType = 'one' | 'two' | 'three'
@@ -23,7 +23,7 @@ export function useDeckContext() {
     return maybeContext
 }
 
-export function DeckContextProvider(props) {
+export function DeckContextProvider(props: {children: ReactNode}) {
     const gameState: {name: string, one: string[], two: string[], three: string[]} = {
         name: 'xxx',
         one: shuffle(xxxDeck.level_one),

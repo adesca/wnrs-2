@@ -1,14 +1,14 @@
 import {Button} from "./Button.tsx";
 import './PlayingArea.css'
 import {useDeckContext} from "../context/DeckContext.tsx";
-import {Fragment} from "react";
+// import {Fragment} from "react";
 import {Card} from "./Card.tsx";
 
 export function PlayingArea() {
     const {
         currCard,
         cardHistory,
-        currentDeck,
+        // currentDeck,
         handleNext,
         currLevel,
         deckInfo,
@@ -28,6 +28,15 @@ export function PlayingArea() {
         <span className={'mx-auto mt-5'}>
             <Button onClick={handleNext}>Next Card</Button>
         </span>
+
+        {/*<div>*/}
+        {/*    <ul>*/}
+        {/*        {cardHistory.map(card => <li key={card}>*/}
+        {/*            {card}*/}
+        {/*        </li>)}*/}
+        {/*    </ul>*/}
+
+        {/*</div>*/}
     </div>
 }
 
