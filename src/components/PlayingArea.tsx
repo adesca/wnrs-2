@@ -11,19 +11,19 @@ export function PlayingArea() {
         // currentDeck,
         handleNext,
         currLevel,
-        deckInfo,
+        gameState,
     } = useDeckContext();
-
+    const currLevelMeta = gameState[`${currLevel}_meta`]
 
     return <div className={'playing-area' +
         ' is-flex is-flex-direction-column is-flex-wrap-wrap is-align-content-center'}>
-        <div className={'is-capitalized'}>Level {currLevel}</div>
+        <div>Deck: {gameState.name}, <span className={'is-capitalized'}>{currLevelMeta.levelName}</span></div>
         <div className={'displayed-cards'}>
             <Card text={currCard}/>
         </div>
 
 
-        <div className={'mx-auto'}>{deckInfo.cardsViewed + 1}/{deckInfo.totalDeckSize}</div>
+        <div className={'mx-auto'}>{currLevelMeta.cardsViewed + 1}/{currLevelMeta.totalDeckSize}</div>
 
         <span className={'mx-auto mt-5'}>
             <Button onClick={handleNext}>Next Card</Button>

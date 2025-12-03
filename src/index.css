@@ -10,6 +10,7 @@
   .playing-area {
     .displayed-cards {
       min-height: 25vh;
+
     }
     /*height: stretch;*/
   }
@@ -43,7 +44,9 @@ dialog::backdrop {
 }
 
 [popover] {
-  border: none
+  border: none;
+  color: var(--bulma-body-color);
+  width: 80%;
 }
 
 .card-history {
