@@ -18,7 +18,7 @@ export function PlayingArea() {
     return <div className={'playing-area' +
         ' is-flex is-flex-direction-column is-flex-wrap-wrap is-align-content-center'}>
         <div className={'is-capitalized'}>Level {currLevel}</div>
-        <div className={'has-width-50'}>
+        <div className={'displayed-cards'}>
             <Card text={currCard}/>
         </div>
 
