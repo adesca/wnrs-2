@@ -1,4 +1,5 @@
 import type {ReactNode} from "react";
+import {Button} from "./Button.tsx";
 
 export function Toolbar() {
 
@@ -8,17 +9,11 @@ export function Toolbar() {
         </span>
 
         <span className={'level-right is-flex-direction-row'}>
-            <Button>level</Button>
-            <Button>text2</Button>
+            <Button isLevel={true} isWhite={true}>level</Button>
+            <Button isLevel={true} isWhite={true}>previous cards</Button>
+            <Button isLevel={true} isWhite={true}>decks</Button>
         </span>
 
     </nav>
 }
 
-interface ButtonProps {
-    children: ReactNode
-}
-function Button({children}: ButtonProps) {
-
-    return <button className={'level-item is-uppercase button is-white'}>{children}</button>
-}

@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useState} from 'react'
 import './App.css'
 import {Toolbar} from "./components/Toolbar.tsx";
+import {PlayingArea} from "./components/PlayingArea.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div >
-      <Toolbar />
-    </div>
-  )
+    return (
+        <div className={'container'}>
+            <Toolbar/>
+            <PlayingArea />
+        </div>
+    )
 }
 
 export default App

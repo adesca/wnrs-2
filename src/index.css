@@ -1,9 +1,30 @@
 :root {
-  --bulma-primary-h: 353.16deg;
-  --bulma-primary-s: 100%;
-  --bulma-primary-l: 37.84%;
-
   .button {
     color: #c10016
   }
+
+  #root {
+    height: 100vh;
+  }
+
+  .playing-area {
+    height: stretch;
+  }
+}
+
+:root {
+  --bulma-primary-h: 353deg;
+  --bulma-primary-l: 38%;
+  --bulma-scheme-h: 0;
+  --bulma-scheme-s: 0%;
+  --bulma-light-l: 96.47%;
+  --bulma-body-background-color: hsl(0,0%,100%);
+  --bulma-body-color: hsl(353.16deg,100%,37.84%);
+  --bulma-skeleton-background: hsl(0, 0%, 0%);
+}
+
+.card {
+  --bulma-card-color: hsl(353.16deg,100%,37.84%);
+  --bulma-card-background-color: hsl(0,0,100%);
+  --bulma-card-shadow: 0 .7px 2.1px #00000005, 0 1.6px 4.8px #00000007, 0 2.9px 8.7px #00000008, 0 4.8px 14.5px #0000000a, 0 7.9px 23.8px #0000000b, 0 13.9px 41.6px #0000000d, 0 30px 90px #00000012;;
 }
