@@ -1,15 +1,28 @@
 import {Button} from "./Button.tsx";
 import './PlayingArea.css'
+import {useDeckContext} from "../context/DeckContext.tsx";
+import {useState} from "react";
 
 export function PlayingArea() {
+    const {
+        currCard,
+        cardHistory,
+        currentDeck,
+        handleNext,
+        currLevel
+    } = useDeckContext();
+
+
     return <div className={'playing-area' +
         ' is-flex is-flex-direction-column is-flex-wrap-wrap is-align-content-center'}>
-        <Card text={"hello"}/>
+        <div className={'is-capitalized'}>Level {currLevel}</div>
+        <Card text={currCard}/>
+
+        <div className={'mx-auto'}>{cardHistory.length + 1}/{cardHistory.length + currentDeck.length}</div>
 
         <span className={'mx-auto'}>
-            <Button>Next Card</Button>
+            <Button onClick={handleNext}>Next Card</Button>
         </span>
-        {/*<Button>Next card</Button>*/}
     </div>
 }
 

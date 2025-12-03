@@ -1,11 +1,11 @@
-import type {ComponentProps, ReactNode} from "react";
+import type {ButtonHTMLAttributes, ComponentProps, ReactNode} from "react";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     isLevel?: boolean
     isWhite?: boolean
 }
-export function Button(props: ButtonProps & ComponentProps<HTMLButtonElement>) {
+export function Button(props: ButtonProps) {
     const {children, isLevel, isWhite, ...buttonProps} = props
     let dynamicClassName = ''
     dynamicClassName += isLevel ? 'level-item ' : ''
