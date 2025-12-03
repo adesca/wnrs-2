@@ -1,8 +1,10 @@
 import {Button} from "./Button.tsx";
 import {useDeckContext} from "../context/DeckContext.tsx";
+import {Card} from "./Card.tsx";
+import {Fragment} from "react";
 
 export function Toolbar() {
-    const {handleNewLevel} = useDeckContext();
+    const {handleNewLevel, cardHistory} = useDeckContext();
 
     return <nav className={'navbar level is-flex-direction-row has-background-primary px-3'}>
         <span className={'level-left'}>
@@ -11,7 +13,7 @@ export function Toolbar() {
 
         <span className={'level-right is-flex-direction-row'}>
             <Button isLevel={true} isWhite={true} popoverTarget={"levels-modal"}>level</Button>
-            <Button isLevel={true} isWhite={true}>previous cards</Button>
+            <Button isLevel={true} isWhite={true} popoverTarget={'previous-cards-modal'}>previous cards</Button>
             <Button isLevel={true} isWhite={true}>decks</Button>
         </span>
 
@@ -21,8 +23,19 @@ export function Toolbar() {
 
             <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('one')}>Level 1</Button>
             <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('two')}>Level 2</Button>
-            <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('three')}>Level 3</Button>
+            <Button isWhite={true} popoverTarget={'levels-modal'}
+                    onClick={() => handleNewLevel('three')}>Level 3</Button>
+            </span>
+        </dialog>
 
+        <dialog popover={"auto"} id={'previous-cards-modal'} className={''}>
+
+
+            <span className={'card-history is-flex is-flex-direction-column is-flex-wrap-wrap is-align-content-center'}>
+                {cardHistory.map(card => <Fragment key={card}>
+                    {/*<div>{card}</div>*/}
+                    <Card text={card}/>
+                </Fragment>)}
             </span>
         </dialog>
 

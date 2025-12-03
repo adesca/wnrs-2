@@ -51,6 +51,7 @@ export function DeckContextProvider(props) {
             setCardHistory(tempHistory);
             gameState[currLevel].shift();
             setCurrCard(gameState[currLevel][0]);
+
         }
     }
 

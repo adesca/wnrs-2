@@ -1,7 +1,8 @@
 import {Button} from "./Button.tsx";
 import './PlayingArea.css'
 import {useDeckContext} from "../context/DeckContext.tsx";
-import {useState} from "react";
+import {Fragment} from "react";
+import {Card} from "./Card.tsx";
 
 export function PlayingArea() {
     const {
@@ -9,44 +10,26 @@ export function PlayingArea() {
         cardHistory,
         currentDeck,
         handleNext,
-        currLevel
+        currLevel,
+        deckInfo,
     } = useDeckContext();
 
 
     return <div className={'playing-area' +
         ' is-flex is-flex-direction-column is-flex-wrap-wrap is-align-content-center'}>
         <div className={'is-capitalized'}>Level {currLevel}</div>
-        <Card text={currCard}/>
+        <div className={'has-width-50'}>
+            <Card text={currCard}/>
+        </div>
 
-        <div className={'mx-auto'}>{cardHistory.length + 1}/{cardHistory.length + currentDeck.length}</div>
 
-        <span className={'mx-auto'}>
+        <div className={'mx-auto'}>{deckInfo.currCardIdx}/{deckInfo.remainingCards + deckInfo.currCardIdx}</div>
+
+        <span className={'mx-auto mt-5'}>
             <Button onClick={handleNext}>Next Card</Button>
         </span>
     </div>
 }
 
-interface CardProps {
-    text: string;
-    classes?: string[];
-}
 
-function Card(props: CardProps) {
-    const {text, classes = []} = props;
-    // return <span className={'card'}>
-    //     <div className={'card-content'}>
-    //         <div className={'content'}>
-    //             {text}
-    //         </div>
-    //     </div>
-    // </span>
-
-    return <div className={`card has-text-weight-bold ${classes.join(' ')}`}>
-        <div className="card-content">
-            <div className="content">
-                {text}
-            </div>
-        </div>
-    </div>
-}
 

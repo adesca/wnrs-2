@@ -36,3 +36,15 @@ dialog::backdrop {
 [popover] {
   border: none
 }
+
+.card-history {
+  width: 210px;
+  height: 400px;
+  overflow: scroll;
+  /*height: .75vh;*/
+  /*overflow: auto;*/
+}
+
+.has-width-50 {
+  width: 50%
+}
