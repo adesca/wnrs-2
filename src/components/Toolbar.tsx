@@ -1,7 +1,8 @@
-import type {ReactNode} from "react";
 import {Button} from "./Button.tsx";
+import {useDeckContext} from "../context/DeckContext.tsx";
 
 export function Toolbar() {
+    const {setLevel} = useDeckContext();
 
     return <nav className={'navbar level is-flex-direction-row has-background-primary px-3'} >
         <span className={'level-left'}>
