@@ -28,15 +28,6 @@ export function PlayingArea() {
         <span className={'mx-auto mt-5'}>
             <Button onClick={handleNext}>Next Card</Button>
         </span>
-
-        {/*<div>*/}
-        {/*    <ul>*/}
-        {/*        {cardHistory.map(card => <li key={card}>*/}
-        {/*            {card}*/}
-        {/*        </li>)}*/}
-        {/*    </ul>*/}
-
-        {/*</div>*/}
     </div>
 }
 
