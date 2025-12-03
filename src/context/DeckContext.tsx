@@ -10,7 +10,7 @@ interface ContextType {
     handleNext: () => void,
     currLevel: LevelType,
     handleNewLevel: (level: LevelType) => void,
-    deckInfo: {currCardIdx: number, remainingCards: number}
+    deckInfo: GameState['one_meta']
 }
 
 // const DeckContext = createContext<null | {context: ContextType, currentLevel: LevelType}>(null);
@@ -23,8 +23,33 @@ export function useDeckContext() {
     return maybeContext
 }
 
-export function DeckContextProvider(props: {children: ReactNode}) {
-    const gameState: {name: string, one: string[], two: string[], three: string[]} = {
+interface GameState {
+    name: string,
+    one: string[],
+    two: string[],
+    three: string[]
+
+    one_meta: {
+        totalDeckSize: number,
+        cardsViewed: number
+    }
+
+    two_meta: {
+        totalDeckSize: number,
+        cardsViewed: number
+    }
+
+    three_meta: {
+        totalDeckSize: number,
+        cardsViewed: number
+    }
+}
+
+export function DeckContextProvider(props: { children: ReactNode }) {
+    const gameState: GameState = {
+        one_meta: {cardsViewed: 0, totalDeckSize: xxxDeck.level_one.length},
+        three_meta: {cardsViewed: 0, totalDeckSize: xxxDeck.level_three.length},
+        two_meta: {cardsViewed: 0, totalDeckSize: xxxDeck.level_two.length},
         name: 'xxx',
         one: shuffle(xxxDeck.level_one),
         two: shuffle(xxxDeck.level_two),
@@ -34,7 +59,7 @@ export function DeckContextProvider(props: {children: ReactNode}) {
     const [currLevel, setLevel] = useState<LevelType>('one')
     const [currCard, setCurrCard] = useState<string>(gameState[currLevel][0])
     const [cardHistory, setCardHistory] = useState<string[]>([])
-    const [deckInfo, setDeckInfo] = useState({currCardIdx: 1, remainingCards: 100})
+    const [deckInfo, setDeckInfo] = useState<GameState['one_meta']>(gameState[`${currLevel}_meta`])
 
     function handleNext() {
         const finalMessage = "You have finished this level!";
@@ -51,14 +76,20 @@ export function DeckContextProvider(props: {children: ReactNode}) {
             setCardHistory(tempHistory);
             gameState[currLevel].shift();
             setCurrCard(gameState[currLevel][0]);
-
         }
+
+        setDeckInfo(currInfo => {
+            return {
+                ...currInfo,
+                cardsViewed: currInfo.cardsViewed + 1
+            }
+        })
     }
 
     function handleNewLevel(newLevel: LevelType) {
         setLevel(newLevel)
         setCurrCard(gameState[newLevel][0])
-        setDeckInfo({currCardIdx: 1, remainingCards: gameState[newLevel].length})
+        setDeckInfo(gameState[`${currLevel}_meta`])
     }
 
 

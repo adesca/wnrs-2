@@ -23,7 +23,7 @@ export function PlayingArea() {
         </div>
 
 
-        <div className={'mx-auto'}>{deckInfo.currCardIdx}/{deckInfo.remainingCards + deckInfo.currCardIdx}</div>
+        <div className={'mx-auto'}>{deckInfo.cardsViewed + 1}/{deckInfo.totalDeckSize}</div>
 
         <span className={'mx-auto mt-5'}>
             <Button onClick={handleNext}>Next Card</Button>

@@ -24,8 +24,7 @@ export function Toolbar() {
 
             <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('one')}>Level 1</Button>
             <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('two')}>Level 2</Button>
-            <Button isWhite={true} popoverTarget={'levels-modal'}
-                    onClick={() => handleNewLevel('three')}>Level 3</Button>
+            <Button isWhite={true} popoverTarget={'levels-modal'} onClick={() => handleNewLevel('three')}>Level 3</Button>
             </span>
             </dialog>
 
