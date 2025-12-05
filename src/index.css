@@ -55,7 +55,8 @@ dialog::backdrop {
   width: 60vw;
   margin: auto;
   display: block;
-  /*overflow: auto;*/
+
+  scrollbar-color: var(--bulma-body-color) white;
 }
 
 .has-width-50 {

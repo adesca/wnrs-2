@@ -9,15 +9,15 @@ export function Toolbar() {
 
     return <>
         <nav className={'navbar level is-flex-direction-row has-background-primary px-3'}>
-        <span className={'level-left'}>
-            <span className={'level-item has-text-weight-bold has-text-white'}>WNRS</span>
-        </span>
+            <span className={'level-left'}>
+                <span className={'level-item has-text-weight-bold has-text-white'}>WNRS</span>
+            </span>
 
             <span className={'level-right is-flex-direction-row'}>
-            <Button isLevel={true} isWhite={true} popoverTarget={"levels-modal"}>level</Button>
-            <Button isLevel={true} isWhite={true} popoverTarget={'previous-cards-modal'}>previous cards</Button>
-            <Button isLevel={true} isWhite={true} popoverTarget={'decks'}>decks</Button>
-        </span>
+                <Button isLevel={true} isWhite={true} popoverTarget={"levels-modal"} isSmall={true}>level</Button>
+                <Button isLevel={true} isWhite={true} popoverTarget={'previous-cards-modal'} isSmall={true}>previous cards</Button>
+                <Button isLevel={true} isWhite={true} popoverTarget={'decks'} isSmall={true}>decks</Button>
+            </span>
 
             <dialog popover={"auto"} id={'levels-modal'} className={''}>
                 <span className={'is-flex is-flex-direction-column'}>
