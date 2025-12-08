@@ -35,6 +35,13 @@
   max-width: 50vw;
 }
 
+.card.wild {
+  color: white;
+  background-color:  hsl(353.16deg,100%,37.84%);
+  /*--bulma-card-color: hsl(0,0,100%) important;*/
+  /*--bulma-card-background-color: hsl(353.16deg,100%,37.84%);*/
+}
+
 .half-size {
   /*width: 50%*/
 }
