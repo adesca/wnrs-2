@@ -12,8 +12,11 @@ export function PlayingArea() {
         handleNext,
         currLevel,
         gameState,
+        handleNewLevel
     } = useDeckContext();
     const currLevelMeta = gameState[`${currLevel}_meta`]
+    console.log(currLevelMeta)
+    const hasFinishedLevel = currLevelMeta.cardsViewed === currLevelMeta.totalDeckSize
 
     return <>
         <div className={'playing-area' +
@@ -21,15 +24,16 @@ export function PlayingArea() {
 
             <div>Deck: {gameState.name}, <span className={'is-capitalized'}>{currLevelMeta.levelName}</span></div>
             <div className={'displayed-cards'}>
-                <Card text={currCard}/>
+                <Card text={currCard} deck/>
             </div>
 
 
-            <div className={'mx-auto'}>{currLevelMeta.cardsViewed + 1}/{currLevelMeta.totalDeckSize}</div>
+            <div className={'mx-auto'}>{Math.min(currLevelMeta.cardsViewed + 1, currLevelMeta.totalDeckSize)}/{currLevelMeta.totalDeckSize}</div>
 
             <span className={'mx-auto mt-5 buttons'}>
-                <Button onClick={handleNext}>Next Card</Button>
-                <Button popoverTarget={'card-list'}>Cheat</Button>
+                <Button popoverTarget={'card-list'} isWhite={true}>Cheat</Button>
+                {!hasFinishedLevel && <Button onClick={handleNext}>Next Card</Button> }
+                {hasFinishedLevel && currLevelMeta.nextLevel !== null &&   <Button onClick={() => handleNewLevel(currLevelMeta.nextLevel as 'two' | 'three')}>Next Level <i className="fas fa-arrow-right" aria-hidden="true"></i></Button> }
             </span>
         </div>
         <dialog popover={'auto'} id={'card-list'}>

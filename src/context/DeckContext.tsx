@@ -34,18 +34,21 @@ interface GameState {
         totalDeckSize: number,
         cardsViewed: number,
         levelName: string
+        nextLevel: 'two'
     }
 
     two_meta: {
         totalDeckSize: number,
         cardsViewed: number,
         levelName: string
+        nextLevel: 'three'
     }
 
     three_meta: {
         totalDeckSize: number,
         cardsViewed: number,
-        levelName: string
+        levelName: string,
+        nextLevel: null
     }
 }
 
@@ -53,11 +56,11 @@ function buildGameState(deckName: keyof typeof DeckIndex): GameState {
     const deck = DeckIndex[deckName];
     return {
         name: deck.displayName,
-        one_meta: {cardsViewed: 0, totalDeckSize: deck.deck.questions.one.length, levelName: deck.deck.levels[0]},
+        one_meta: {nextLevel: 'two', cardsViewed: 0, totalDeckSize: deck.deck.questions.one.length, levelName: deck.deck.levels[0]},
         three: shuffle(structuredClone(deck.deck.questions.three)),
-        three_meta: {cardsViewed: 0, totalDeckSize: deck.deck.questions.three.length, levelName: deck.deck.levels[2]},
+        three_meta: {nextLevel: null, cardsViewed: 0, totalDeckSize: deck.deck.questions.three.length, levelName: deck.deck.levels[2]},
         two: shuffle(structuredClone(deck.deck.questions.two)),
-        two_meta: {cardsViewed: 0, totalDeckSize: deck.deck.questions.two.length, levelName: deck.deck.levels[1]},
+        two_meta: {nextLevel: 'three', cardsViewed: 0, totalDeckSize: deck.deck.questions.two.length, levelName: deck.deck.levels[1]},
         one: shuffle(structuredClone(deck.deck.questions.one))
     }
 }

@@ -1,6 +1,9 @@
 :root {
   .button {
-    color: #c10016
+    color: #c10016;
+    border: #c10016;
+    border-width: 1px;
+    border-style: solid;
   }
 
   #root {
