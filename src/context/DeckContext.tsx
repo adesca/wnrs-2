@@ -105,11 +105,11 @@ export function DeckContextProvider(props: { children: ReactNode }) {
        const newGameDeck = DeckIndex[deckName];
        const newGameState: GameState = {
            name: newGameDeck.displayName,
-           one_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.one.length, levelName: newGameDeck.deck.levels[0]},
+           one_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.one.length, levelName: newGameDeck.deck.levels[0], nextLevel: "two"},
            three: shuffle(structuredClone(newGameDeck.deck.questions.three)),
-           three_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.three.length, levelName: newGameDeck.deck.levels[2]},
+           three_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.three.length, levelName: newGameDeck.deck.levels[2], nextLevel: null},
            two: shuffle(structuredClone(newGameDeck.deck.questions.two)),
-           two_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.two.length, levelName: newGameDeck.deck.levels[1]},
+           two_meta: {cardsViewed: 0, totalDeckSize: newGameDeck.deck.questions.two.length, levelName: newGameDeck.deck.levels[1], nextLevel: 'three'},
            one: shuffle(structuredClone(newGameDeck.deck.questions.one))
        }
         setLevel('one')
